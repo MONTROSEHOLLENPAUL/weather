@@ -4,8 +4,10 @@
   box-sizing: border-box;
 }
 body {
-  background: rgb(8, 8, 8, 0.56);
-  /*min-height: 100vh;*/
+  background: url("./background/weather-images.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
   color: #fff;
   font-family: serif;
 }
@@ -13,14 +15,13 @@ body {
 .container {
   /*max-width: 450px;*/
   width: 450px;
-  background: rgb(159, 167, 235);
+  background: rgb(136, 147, 236);
   border-radius: 8px;
   box-shadow: 0 0 15px 3px rgb(245, 246, 255);
   padding: 20px;
 
 
   position: absolute;
-    display: grid;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -30,6 +31,11 @@ body {
   font-size: 2rem;
   text-align: center;
   justify-content: center;
+}
+
+.globe{
+  height: 80px;
+  width: 80px;
 }
 #temperature {
   text-align: center;
@@ -64,6 +70,7 @@ body {
 
   margin-top: 30px;
   margin-bottom: 30px;
+  height: 50px;
 }
 
 .searchButton {
@@ -102,15 +109,32 @@ button:active {
 }
 
 /*----------------media query-----------------*/
-@media  (max-width: 450px) {
+@media  (max-width: 850px) {
   .title{
     font-size: 1.8rem;
   }
   .container {
-    max-width: 365px;
-    background: rgb(159, 167, 235);
-    border-radius: 8px;
-    box-shadow: 0 0 15px 3px rgb(245, 246, 255);
+    width: 100%;
+    border-radius: 1px;
+    box-shadow: 0 0 rgb(245, 246, 255);
     padding: 20px;
+    height: 100vh;
+  }
+  .searchBox{
+    height: 40px;
+  }
+  .searchButton{
+    height: 30px;
+    width: 30px;
+  }
+}
+
+@media (max-width: 365px) {
+  .title{
+    font-size: 1.4rem;
+  }
+  .globe{
+    height: 50px;
+    width: 50px;
   }
 }

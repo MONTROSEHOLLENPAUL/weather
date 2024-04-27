@@ -1,5 +1,7 @@
 const input = document.querySelector(".searchInput");
-const search = document.querySelector(".searchButton");
+document.querySelector(".searchButton").addEventListener("click", () => {
+  meteo(input.value);
+});
 const iconTemp = document.querySelector(".icontemp");
 
 const apikey = `5a982fa18197223a1767459031b92363`;
@@ -22,7 +24,7 @@ async function meteo(city) {
 
   /*-------------------------------------*/
   let data = await response.json();
-  //console.log(data);
+  console.log(data);
   document.querySelector("#ville").innerHTML = data.name;
   document.querySelector("#degree").innerHTML = `${
     Math.round(data.main.temp) - 273
@@ -164,12 +166,25 @@ async function meteo(city) {
       gif.appendChild(condgif);
     }
     thund();
+  }else{
+    document.querySelector(".icontemp").innerHTML = `<h3>Other condition</h3>`;
+    function globe(){
+      let gif = document.querySelector(".icontemp");
+      let condgif = new Image();
+      condgif.src = "gif cond/else.gif";
+      condgif.setAttribute("width", "60%");
+      condgif.setAttribute("height", "200vh");
+      gif.appendChild(condgif);
+    }
+    globe()
   }
 }
 
-/*button search */
-search.addEventListener("click", () => {
-  meteo(input.value);
+input.addEventListener("keypress", (e) => {
+  const btnEnter = e.key;
+  if (btnEnter === "Enter") {
+    meteo(input.value)
+  }
 });
 
 window.addEventListener("load", () => {
